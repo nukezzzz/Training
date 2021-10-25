@@ -1,0 +1,6 @@
+flask~=2.0.2
+flask_pymongo
+flask-cors
+dnspython
+waitress
+pymongo~=3.12.0

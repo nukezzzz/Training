@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-countrylist
+spec:
+  selector:
+    app: Countrylist
+    type: backendAPI
+  ports:
+    - port: 5000
+      targetPort: 5000

@@ -1,0 +1,1 @@
+docker build -t nukezzz101/frontend:0.4 %~dp0

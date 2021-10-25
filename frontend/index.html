@@ -1,0 +1,384 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>ODI Match History</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css"/>
+    </noscript>
+</head>
+<body class="is-preload">
+
+<!-- Sidebar -->
+<section id="sidebar">
+    <div class="inner">
+        <nav>
+            <ul>
+                <li><a href="#intro">Welcome</a></li>
+                <li><a href="#one">Country Details</a></li>
+                <li><a href="#two">Srilanka History</a></li>
+                <li><a href="#three">All History</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<!-- Wrapper -->
+
+<div id="wrapper">
+
+    <!-- Intro -->
+    <section id="intro" class="wrapper style1 fullscreen fade-up">
+        <div class="inner">
+            <h1>ODI History</h1>
+            <p>Get Updated on the latest ODI results</p>
+        </div>
+
+
+    </section>
+
+    <!-- One -->
+    <section id="one" class="wrapper style2 spotlights">
+        <section>
+            <div class="content">
+                <div class="inner">
+                    <div id="myData01"></div>
+                    <br><br><br>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <!-- Two -->
+    <section id="two" class="wrapper style3 fade-up">
+        <div class="inner">
+            <h2>SriLanka ODI History</h2>
+            <div class="features">
+                <div id="myData04"></div>
+
+            </div>
+            <ul class="actions">
+                <li><a href="generic.html" class="button">Learn more</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Three -->
+    <section id="three" class="wrapper style1 fade-up">
+        <div class="inner">
+            <h2>History</h2>
+            <p>ODI match history from 1980 to present</p>
+            <div class="split style1">
+                <section>
+                    <form method="GET" id="form" action="signup.html" >
+                        <div class="fields">
+                            <div id="myDiv" class="field half">
+
+                            </div>
+                        </div>
+                        <button type="submit">View Records</button>
+
+                    </form>
+
+                </section>
+            </div>
+              <div id="myData05"></div>
+        </div>
+
+    </section>
+</div>
+<!-- Footer -->
+<footer id="footer" class="wrapper style1-alt">
+    <div class="inner">
+        <ul class="menu">
+            <li>&copy; DevOps Training.</li>
+        </ul>
+    </div>
+</footer>
+
+<!-- Scripts -->
+
+<script>
+        fetch('http://test.com/srilankahistory')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data2) {
+            console.log(data2);
+                appendData2(data2);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData2(data2) {
+            var mainContainer02 = document.getElementById("myData04");
+            var table = document.createElement('table');
+            mainContainer02.appendChild(table);
+            var trh = document.createElement('tr');
+            table.appendChild(trh);
+
+                var head01 = document.createElement('th');
+                trh.appendChild(head01);
+                var txt01 = document.createTextNode('Match');
+                head01.appendChild(txt01);
+
+                var head02 = document.createElement('th');
+                trh.appendChild(head02);
+                var txt02 = document.createTextNode('Match Date');
+                head02.appendChild(txt02);
+
+                var head04 = document.createElement('th');
+                trh.appendChild(head04);
+                var txt04 = document.createTextNode('Ground');
+                head04.appendChild(txt04);
+
+                var head05 = document.createElement('th');
+                trh.appendChild(head05);
+                var txt05 = document.createTextNode('Result');
+                head05.appendChild(txt05);
+
+            for (var i = 0; i < data2.length; i++) {
+                  var tr = document.createElement('tr');
+                  table.appendChild(tr);
+                  var td = document.createElement('td');
+                  tr.appendChild(td);
+                  var txt = document.createTextNode(data2[i].Match);
+                  td.appendChild(txt);
+                  var td = document.createElement('td');
+                  tr.appendChild(td);
+                  var txt = document.createTextNode(data2[i]["Match Date"]);
+                  td.appendChild(txt);
+                  var td = document.createElement('td');
+                  tr.appendChild(td);
+                  var txt = document.createTextNode(data2[i]["Ground"]);
+                  td.appendChild(txt);
+                  var td = document.createElement('td');
+                  tr.appendChild(td);
+                  var txt = document.createTextNode(data2[i]["Result"]);
+                  td.appendChild(txt);
+            }
+        }
+</script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+        fetch('http://test.com/stats/England')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData(data) {
+            var mainContainer = document.getElementById("myData01");
+            for (var i = 0; i < data.length; i++) {
+                var div = document.createElement("div");
+                div.innerHTML = ' Matches Won : ' + data[i].Won + '	&nbsp;	&nbsp;	&nbsp;Matches Lost : ' + data[i].Lost + ' &nbsp;	&nbsp;	&nbsp; Matches Tied : ' + data[i].Tied  ;
+                var h2 = document.createElement("h2");
+                h2.innerHTML = '' + data[i].Country;
+                var h4 = document.createElement("h4");
+                h4.innerHTML = 'Total Matches Played : ' + data[i].Count;
+                mainContainer.appendChild(h2);
+                mainContainer.appendChild(h4);
+                mainContainer.appendChild(div);
+            }
+        }
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+        fetch('http://test.com/stats/Sri Lanka')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData(data) {
+            var mainContainer = document.getElementById("myData02");
+            for (var i = 0; i < data.length; i++) {
+                var div2 = document.createElement("div");
+                div.innerHTML = ' Matches Won : ' + data[i].Won + '	&nbsp;	&nbsp;	&nbsp;Matches Lost : ' + data[i].Lost + ' &nbsp;	&nbsp;	&nbsp; Matches Tied : ' + data[i].Tied  ;
+                var h22 = document.createElement("h2");
+                h2.innerHTML = '' + data[i].Country;
+                var h42 = document.createElement("h4");
+                h4.innerHTML = 'Total Matches Played : ' + data[i].Count;
+                mainContainer.appendChild(h22);
+                mainContainer.appendChild(h42);
+                mainContainer.appendChild(div2);
+            }
+        }
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+    const form = document.getElementById('form');
+    form.addEventListener('submit', logSubmit);
+    function logSubmit(event) {
+        $("#tbodyid").empty();
+        const country = form.elements['mySelect'];
+        let val = country.value;
+        console.log(val);
+      event.preventDefault();
+      url = 'http://test.com/view/'+val;
+      fetch(url)
+            .then(function (response) {
+
+                return response.json();
+            })
+            .then(function (data5) {
+                console.log(data5);
+                appendData5(data5);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData5(data5) {
+
+            var mainContainer05 = document.getElementById("myData05");
+
+            var table = document.createElement('table');
+            mainContainer05.appendChild(table);
+            var trh = document.createElement('tr');
+            table.appendChild(trh);
+
+                var head01 = document.createElement('th');
+                trh.appendChild(head01);
+                var txt01 = document.createTextNode('Match');
+                head01.appendChild(txt01);
+
+                var head02 = document.createElement('th');
+                trh.appendChild(head02);
+                var txt02 = document.createTextNode('Match Date');
+                head02.appendChild(txt02);
+
+                var head04 = document.createElement('th');
+                trh.appendChild(head04);
+                var txt04 = document.createTextNode('Ground');
+                head04.appendChild(txt04);
+
+                var head05 = document.createElement('th');
+                trh.appendChild(head05);
+                var txt05 = document.createTextNode('Result');
+                head05.appendChild(txt05);
+
+            var tbody = document.createElement('tbody');
+            tbody.setAttribute("id", "tbodyid");
+            table.appendChild(tbody);
+
+            for (var i = 0; i < data5.length; i++) {
+                  var tr = document.createElement('tr');
+                  table.appendChild(tr);
+                  var td = document.createElement('td');
+                  tr.appendChild(td);
+                  var txt = document.createTextNode(data5[i].Match);
+                  td.appendChild(txt);
+                  var td = document.createElement('td');
+                  tr.appendChild(td);
+                  var txt = document.createTextNode(data5[i]["Match Date"]);
+                  td.appendChild(txt);
+                  var td = document.createElement('td');
+                  tr.appendChild(td);
+                  var txt = document.createTextNode(data5[i]["Ground"]);
+                  td.appendChild(txt);
+                  var td = document.createElement('td');
+                  tr.appendChild(td);
+                  var txt = document.createTextNode(data5[i]["Result"]);
+                  td.appendChild(txt);
+            }
+        }
+
+    }
+</script>
+<script>
+        fetch('http://test.com/stats/Australia')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData(data) {
+            var mainContainer = document.getElementById("myData01");
+            for (var i = 0; i < data.length; i++) {
+                var div = document.createElement("div");
+                div.innerHTML = ' Matches Won : ' + data[i].Won + '	&nbsp;	&nbsp;	&nbsp;Matches Lost : ' + data[i].Lost + ' &nbsp;	&nbsp;	&nbsp; Matches Tied : ' + data[i].Tied  ;
+                var h2 = document.createElement("h2");
+                h2.innerHTML = '' + data[i].Country;
+                var h4 = document.createElement("h4");
+                h4.innerHTML = 'Total Matches Played : ' + data[i].Count;
+                mainContainer.appendChild(h2);
+                mainContainer.appendChild(h4);
+                mainContainer.appendChild(div);
+            }
+        }
+
+</script>
+<script>
+        fetch('http://test.com/countrylist')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+
+                appendData3(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData3(data) {
+            var myDiv = document.getElementById("myDiv");
+            var array = data;
+            var selectList = document.createElement("select");
+            selectList.setAttribute("id", "mySelect");
+            myDiv.appendChild(selectList);
+
+            for (var i = 0; i < array.length; i++) {
+                var option = document.createElement("option");
+                option.setAttribute("value", array[i]);
+                option.text = array[i];
+                selectList.appendChild(option);
+            }
+
+        }
+
+</script>
+
+</body>
+</html>

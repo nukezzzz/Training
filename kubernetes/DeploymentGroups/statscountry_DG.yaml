@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-dg-statscountry
+  labels:
+    app: Statscountry
+    type: backendAPI
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Statscountry
+      type: backendAPI
+  template:
+    metadata:
+      labels:
+        app: Statscountry
+        type: backendAPI
+    spec:
+      containers:
+        - name: statscountry
+          image: nukezzz101/statscountry:0.5
+          env:
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-cred
+                  key: MONGODB_URI

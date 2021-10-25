@@ -1,0 +1,76 @@
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+#  name: ingress-controller
+#spec:
+#  rules:
+#  - host: kubernetes.docker.internal
+#    http:
+#      paths:
+#      - pathType: Prefix
+#        path: "/listall"
+#        backend:
+#          service:
+#            name: service-listall
+#            port:
+#              number: 5000
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingresscon
+  annotations:
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: test.com
+    http:
+      paths:
+      - pathType: Exact
+        path: "/"
+        backend:
+          service:
+            name: service-frontend
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/assets"
+        backend:
+          service:
+            name: service-frontend
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/listall"
+        backend:
+          service:
+            name: service-listall
+            port:
+              number: 5000
+      - pathType: Prefix
+        path: "/srilankahistory"
+        backend:
+          service:
+            name: service-srilankahistory
+            port:
+              number: 5000
+      - pathType: Prefix
+        path: "/view/"
+        backend:
+          service:
+            name: service-viewcountry
+            port:
+              number: 5000
+      - pathType: Prefix
+        path: "/stats/"
+        backend:
+          service:
+            name: service-statscountry
+            port:
+              number: 5000
+      - pathType: Prefix
+        path: "/countrylist"
+        backend:
+          service:
+            name: service-countrylist
+            port:
+              number: 5000

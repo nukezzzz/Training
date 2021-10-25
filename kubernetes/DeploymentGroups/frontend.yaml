@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-dg
+  labels:
+    app: Frontend
+    type: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Frontend
+      type: frontend
+  template:
+    metadata:
+      labels:
+        app: Frontend
+        type: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: nukezzz101/frontend:0.2

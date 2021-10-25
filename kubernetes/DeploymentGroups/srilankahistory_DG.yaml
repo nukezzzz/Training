@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-dg-srilankahistory
+  labels:
+    app: Srilankahistory
+    type: backendAPI
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Srilankahistory
+      type: backendAPI
+  template:
+    metadata:
+      labels:
+        app: Srilankahistory
+        type: backendAPI
+    spec:
+      containers:
+        - name: srilankahistory
+          image: nukezzz101/srilankahistory:0.5
+          env:
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-cred
+                  key: MONGODB_URI

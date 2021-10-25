@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-dg-countrylist
+  labels:
+    app: Countrylist
+    type: backendAPI
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Countrylist
+      type: backendAPI
+  template:
+    metadata:
+      labels:
+        app: Countrylist
+        type: backendAPI
+    spec:
+      containers:
+        - name: countrylist
+          image: nukezzz101/countrylist:0.5
+          env:
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-cred
+                  key: MONGODB_URI
