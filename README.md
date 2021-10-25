@@ -2,11 +2,14 @@
  <h2>Requirements </h2>
 
 Docker desktop Kubernetes (single node cluster)
+
 Mongo server needed 5.0 
+
 ingress nginx controller needed 
+
 python req files are in /backend/*api/requirments.txt folder 
 
-ingress controller uses tesst.com domian add it as a hostfile entry
+<strong>double asterisks</strong> ingress controller uses test.com domian add it as a hostfile entry
 
  <h2>DB setup background </h2>
 
@@ -21,7 +24,7 @@ push to DCR with /docker/push/bat
 
  <h2>Start app on kubernetes </h2>
 
-Can start  kubernets app from Setup.bat file in [Setupfile](/kubernetes/Setup.bat) 
+✅ Can start  kubernets app from Setup.bat file in [Setupfile](/kubernetes/Setup.bat) 
 
-Can Destroy kubernets app from Destroy.bat file in [Destroyfile](/kubernetes/Destroy.bat) 
+🔴 Can Destroy kubernets app from Destroy.bat file in [Destroyfile](/kubernetes/Destroy.bat) 
 
