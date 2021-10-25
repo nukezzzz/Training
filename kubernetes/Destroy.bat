@@ -3,7 +3,7 @@ REM Destory DB
 
 REM Destory pod
 kubectl delete -f %~dp0database\mongo.yaml
-REM Destory claim
+REM Destory pv claim
 kubectl delete -f %~dp0database\pvc.yaml
 REM Destory persistent volume
 kubectl delete -f %~dp0database\pv.yaml
