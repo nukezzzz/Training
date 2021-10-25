@@ -9,7 +9,7 @@ ingress nginx controller needed
 
 python req files are in /backend/*api/requirments.txt folder 
 
-<strong>double asterisks</strong> ingress controller uses test.com domian add it as a hostfile entry
+🔸 ingress controller uses test.com domian add it as a hostfile entry
 
  <h2>DB setup background </h2>
 
