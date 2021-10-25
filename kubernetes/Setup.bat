@@ -3,9 +3,9 @@ REM Setup DB
 
 REM setup persistent volume
 kubectl apply -f %~dp0database\pv.yaml
-REM setup persistent volume claim
+REM setup pod
 kubectl apply -f %~dp0database\mongo.yaml
-REM setup DB pod
+REM setup claim
 kubectl apply -f %~dp0database\pvc.yaml
 REM setup db-service for internal connections with DG
 kubectl apply -f %~dp0database\db_service.yaml

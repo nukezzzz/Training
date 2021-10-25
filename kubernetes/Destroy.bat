@@ -1,12 +1,12 @@
 REM Distory Kubernets application deployment.
 REM Destory DB
 
+REM Destory pod
+kubectl delete -f %~dp0database\mongo.yaml
+REM Destory claim
+kubectl delete -f %~dp0database\pvc.yaml
 REM Destory persistent volume
 kubectl delete -f %~dp0database\pv.yaml
-REM Destory persistent volume claim
-kubectl delete -f %~dp0database\mongo.yaml
-REM Destory DB pod
-kubectl delete -f %~dp0database\pvc.yaml
 REM Destory db-service for internal connections with DG
 kubectl delete -f %~dp0database\db_service.yaml
 REM create DB access url (MONGODB_URI)
