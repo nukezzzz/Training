@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo:4.0.27-xenial
+    ports:
+      - 27017:27017
+  mongo-seed:
+    build: ../database
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+  backend:
+    build: ../backend/listallAPI
+    ports:
+      - 5000:5000
+    environment:
+      - DB=mongodb://mongodb:27017/cricket
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+      - mongo-seed
+  frontend:
+    build: ../frontend
+    ports:
+      - 8000:80
+
+
