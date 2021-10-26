@@ -1,28 +1,61 @@
 version: "3.8"
 services:
-  mongodb:
-    image: mongo:4.0.27-xenial
+  db-service:
+    image: mongo:5.0-focal
     ports:
       - 27017:27017
   mongo-seed:
     build: ../database
     links:
-      - mongodb
+      - db-service
     depends_on:
-      - mongodb
-  backend:
-    build: ../backend/listallAPI
+      - db-service
+  backend-srilankahistory:
+    image: nukezzz101/srilankahistory:0.5
     ports:
       - 5000:5000
     environment:
-      - DB=mongodb://mongodb:27017/cricket
+      - MONGODB_URI=mongodb://db-service:27017/cricket
     links:
-      - mongodb
+      - db-service
     depends_on:
-      - mongodb
+      - db-service
+      - mongo-seed
+  backend-statsCountry:
+    image: nukezzz101/statscountry:0.5
+    ports:
+      - 5001:5000
+    environment:
+      - MONGODB_URI=mongodb://db-service:27017/cricket
+    links:
+      - db-service
+    depends_on:
+      - db-service
+      - mongo-seed
+  backend-viewCountry:
+    image: nukezzz101/viewcountry:0.5
+    ports:
+      - 5002:5000
+    environment:
+      - MONGODB_URI=mongodb://db-service:27017/cricket
+    links:
+      - db-service
+    depends_on:
+      - db-service
+      - mongo-seed
+  backend-countrylist:
+    image: nukezzz101/countrylist:0.5
+    ports:
+      - 5003:5000
+    environment:
+      - MONGODB_URI=mongodb://db-service:27017/cricket
+    links:
+      - db-service
+    depends_on:
+      - db-service
       - mongo-seed
   frontend:
-    build: ../frontend
+    image: docker-compose-front:0.5
     ports:
       - 8000:80
 
