@@ -1,6 +1,6 @@
-FROM mongo:4.0.27-xenial
+FROM mongo:5.0-focal
 COPY matches.json /matches.json
-#CMD mongoimport --host mongodb --db cricket --collection matches --type json --file /matches.json --jsonArray
+CMD mongoimport --host db-service --db cricket --collection matches --type json --file /matches.json --jsonArray
 
 
 

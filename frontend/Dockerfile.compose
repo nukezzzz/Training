@@ -1,0 +1,8 @@
+FROM nginx
+COPY . /usr/share/nginx/html
+COPY ./docker-front /usr/share/nginx/html
+
+#use this command to build : docker build -t docker-compose-front:0.5 -f Docker.compose .
+
+
+
