@@ -4,7 +4,7 @@ on:
     branches: [ main ]
 jobs:
   job01:
-    runs-on: windows:latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - name: print date
